@@ -12,7 +12,7 @@ import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
   render() {
-    const postEdges = this.props.data.allMarkdownRemark.edges;
+    const postEdges = this.props.data.allWpPost.edges;
     const postList = getPostList(postEdges);
     const { tagList, categoryList } = getTagCategoryList(postList);
     const content = (
@@ -55,39 +55,37 @@ export default Index;
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(
+    allWpPost(
       limit: 2000
       sort: { 
-        fields: [fields___date], 
+        fields: [date], 
         order: DESC 
-      }
-      filter: { 
-        frontmatter: { 
-          template: { eq: "post" } 
-        } 
       }
     ) {
       edges {
         node {
-          fields {
-            slug
-            date
-          }
+          slug
+          title
           excerpt
-          timeToRead
-          frontmatter {
-            title
-            tags
-            categories
-            date
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 660, quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+          tags {
+            nodes {
+              name
             }
           }
+          date
+          # frontmatter {
+          #   title
+          #   tags
+          #   categories
+          #   date
+          #   cover {
+          #     childImageSharp {
+          #       fluid(maxWidth: 660, quality: 100) {
+          #         ...GatsbyImageSharpFluid
+          #       }
+          #     }
+          #   }
+          # }
         }
       }
     }

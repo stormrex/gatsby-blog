@@ -11,10 +11,8 @@ import { getPostList, getCategoryPath } from "../utils/helpers";
 import config from "../../data/SiteConfig";
 
 const CategoryTemplate = ({ data, pageContext }) => {
-  const { 
-    category, categoryList, tagList, latestPostEdges, currentPage, totalPages 
-  } = pageContext;
-  const postEdges = data.allMarkdownRemark.edges;
+  const { category, categoryList, tagList, latestPostEdges, currentPage, totalPages } = pageContext;
+  const postEdges = data.allWpPost.edges;
   const postList = getPostList(postEdges);
   const content = (
     <>
@@ -57,41 +55,39 @@ export default CategoryTemplate;
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query CategoryPage($category: String, $skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
+    allWpPost(
       limit: $limit,
       skip: $skip,
       sort: { 
-        fields: [fields___date], 
+        fields: [date], 
         order: DESC 
       }
-      filter: { 
-        frontmatter: { 
-          categories: { in: [$category] }, 
-          template: { eq: "post" } 
-        } 
-      }
+      filter: {categories:{nodes: {elemMatch:{name:{in: [$category]}}}}}
     ) {
       totalCount
       edges {
         node {
-          fields {
-            slug
-            date
-          }
+          slug
+          title
           excerpt
-          timeToRead
-          frontmatter {
-            title
-            tags
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 660, quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+          tags {
+            nodes {
+              name
             }
-            date
           }
+          date
+          # frontmatter {
+          #   title
+          #   tags
+          #   cover {
+          #     childImageSharp {
+          #       fluid(maxWidth: 660, quality: 100) {
+          #         ...GatsbyImageSharpFluid
+          #       }
+          #     }
+          #   }
+          #   date
+          # }
         }
       }
     }

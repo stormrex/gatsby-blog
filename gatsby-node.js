@@ -4,45 +4,9 @@ const moment = require("moment");
 const siteConfig = require("./data/SiteConfig");
 const slugify = text => slug(text).toLowerCase();
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
-  let slug;
-  if (node.internal.type === "MarkdownRemark") {
-    const fileNode = getNode(node.parent);
-    const parsedFilePath = path.parse(fileNode.relativePath);
-    if (
-      Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
-    ) {
-      slug = `/${slugify(node.frontmatter.title)}`;
-    } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
-      slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-    } else if (parsedFilePath.dir === "") {
-      slug = `/${parsedFilePath.name}/`;
-    } else {
-      slug = `/${parsedFilePath.dir}/`;
-    }
 
-    if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
-        slug = `/${slugify(node.frontmatter.slug)}`;
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
-        const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
-        if (!date.isValid)
-          console.warn(`WARNING: Invalid date.`, node.frontmatter);
 
-        createNodeField({
-          node,
-          name: "date",
-          value: date.toISOString()
-        });
-      }
-    }
-    createNodeField({ node, name: "slug", value: slug });
-  }
-};
-
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const postPageTemplate = path.resolve("src/templates/post-template.jsx");
   const pagePageTemplate = path.resolve("src/templates/page-template.jsx");
@@ -52,19 +16,44 @@ exports.createPages = async ({ graphql, actions }) => {
   const markdownQueryResult = await graphql(
     `
       {
-        allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+        allWpPost(sort: {fields: [date], order: DESC}) {
           edges {
             node {
-              fields {
-                slug
+              slug
+              title
+              tags {
+                nodes {
+                  name
+                }
               }
-              frontmatter {
-                template
-                title
-                tags
-                categories
-                date
+              template {
+                templateName
               }
+              categories {
+                nodes {
+                  name
+                }
+              }
+              date
+            }
+          }
+        }
+      }
+    `
+  );
+
+  const pageQueryResult = await graphql(
+    `
+      {
+        allWpPage(sort: {fields: [date], order: DESC}) {
+          edges {
+            node {
+              slug
+              title
+              template {
+                templateName
+              }
+              date
             }
           }
         }
@@ -73,8 +62,13 @@ exports.createPages = async ({ graphql, actions }) => {
   );
 
   if (markdownQueryResult.errors) {
-    console.error(markdownQueryResult.errors);
-    throw markdownQueryResult.errors;
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
+
+  if (pageQueryResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
   }
 
   // Filter data
@@ -83,26 +77,24 @@ exports.createPages = async ({ graphql, actions }) => {
   const postEdges = [];
   const pageEdges = [];
   
-  markdownQueryResult.data.allMarkdownRemark.edges.forEach(edge => {
-    if (edge.node.frontmatter.tags) {
-      edge.node.frontmatter.tags.forEach(tag => {
-        tagSet.add(tag);
+  markdownQueryResult.data.allWpPost.edges.forEach(edge => {
+    if (edge.node.tags.nodes) {
+      edge.node.tags.nodes.forEach(tag => {
+        tagSet.add(tag.name);
       });
     }
 
-    if (edge.node.frontmatter.categories) {
-      edge.node.frontmatter.categories.forEach(category => {
-        categorySet.add(category);
+    if (edge.node.categories.nodes) {
+      edge.node.categories.nodes.forEach(category => {
+        categorySet.add(category.name);
       });
     }
 
-    if (edge.node.frontmatter.template === "post") {
-      postEdges.push(edge);
-    }
+    postEdges.push(edge);
+  });
 
-    if (edge.node.frontmatter.template === "page") {
-      pageEdges.push(edge);
-    }
+  pageQueryResult.data.allWpPage.edges.forEach(edge => {
+    pageEdges.push(edge);
   });
   
   // Create tagList, categoryList
@@ -125,14 +117,14 @@ exports.createPages = async ({ graphql, actions }) => {
     const prevEdge = postEdges[prevID];
 
     createPage({
-      path: edge.node.fields.slug,
+      path: edge.node.slug,
       component: postPageTemplate,
       context: {
-        slug: edge.node.fields.slug,
-        nexttitle: nextEdge.node.frontmatter.title,
-        nextslug: nextEdge.node.fields.slug,
-        prevtitle: prevEdge.node.frontmatter.title,
-        prevslug: prevEdge.node.fields.slug,
+        slug: edge.node.slug,
+        nexttitle: nextEdge.node.title,
+        nextslug: nextEdge.node.slug,
+        prevtitle: prevEdge.node.title,
+        prevslug: prevEdge.node.slug,
         tagList,
         categoryList,
         latestPostEdges
@@ -143,10 +135,10 @@ exports.createPages = async ({ graphql, actions }) => {
   // create page page
   pageEdges.forEach(edge => {
     createPage({
-      path: edge.node.fields.slug,
+      path: edge.node.slug,
       component: pagePageTemplate,
       context: {
-        slug: edge.node.fields.slug,
+        slug: edge.node.slug,
         tagList,
         categoryList,
         latestPostEdges
@@ -161,7 +153,11 @@ exports.createPages = async ({ graphql, actions }) => {
   // create tag page
   tagList.forEach(tag => {
     tagPosts = postEdges.filter(edge => {
-      const tags = edge.node.frontmatter.tags;
+      let tags = []
+      edge.node.tags.nodes.forEach(tagD => {
+        tags.push(tagD.name);
+      });
+
       return tags && tags.includes(tag);
     });
 
@@ -189,7 +185,11 @@ exports.createPages = async ({ graphql, actions }) => {
   // create category page
   categoryList.forEach(category => {
     categoryPosts = postEdges.filter(edge => {
-      const categories = edge.node.frontmatter.categories;
+      let categories = [];
+      edge.node.categories.nodes.forEach(categoryD => {
+        categories.push(categoryD.name);
+      });
+
       return categories && categories.includes(category);
     });
 

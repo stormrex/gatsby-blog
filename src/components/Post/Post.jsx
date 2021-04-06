@@ -9,7 +9,7 @@ import "./Post.scss";
 import "../../../content/styles/code-highlight.scss";
 
 const Post = ({ postNode, config, slug }) => {
-  const post = postNode.frontmatter;
+  const post = postNode;
   if (!post.id) {
     post.id = slug;
   }

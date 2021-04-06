@@ -11,10 +11,8 @@ import { getPostList, getTagPath } from "../utils/helpers";
 import config from "../../data/SiteConfig";
 
 const TagTemplate = ({ data, pageContext}) => {
-  const { 
-    tag, tagList, categoryList, latestPostEdges, currentPage, totalPages 
-  } = pageContext;
-  const postEdges = data.allMarkdownRemark.edges;
+  const { tag, tagList, categoryList, latestPostEdges, currentPage, totalPages } = pageContext;
+  const postEdges = data.allWpPost.edges;
   const postList = getPostList(postEdges);
   const content = (
     <>
@@ -57,42 +55,46 @@ export default TagTemplate;
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query TagPage($tag: String, $skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
+    allWpPost(
       limit: $limit
       skip: $skip
       sort: { 
-        fields: [fields___date], 
+        fields: [date], 
         order: DESC 
       }
-      filter: { 
-        frontmatter: { 
-          tags: { in: [$tag] }, 
-          template: { eq: "post" } 
-        } 
-      }
+      filter: {tags:{nodes: {elemMatch:{name:{in: [$tag]}}}}}
+      # filter: { 
+      #   frontmatter: { 
+      #     tags: { in: [$tag] }, 
+      #     template: { eq: "post" } 
+      #   } 
+      # }
     ) {
       totalCount
       edges {
         node {
-          fields {
-            slug
-            date
-          }
+          slug
+          title
           excerpt
-          timeToRead
-          frontmatter {
-            title
-            tags
-            categories
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 660, quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+          tags {
+            nodes {
+              name
             }
-            date
           }
+          date
+          # frontmatter {
+          #   title
+          #   tags
+          #   categories
+          #   cover {
+          #     childImageSharp {
+          #       fluid(maxWidth: 660, quality: 100) {
+          #         ...GatsbyImageSharpFluid
+          #       }
+          #     }
+          #   }
+          #   date
+          # }
         }
       }
     }

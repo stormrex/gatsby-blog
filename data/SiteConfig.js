@@ -1,12 +1,13 @@
 const config = {
+  
   // Site info
-  siteTitle: "Gatsby Blog Template", // Site title.
-  siteTitleShort: "GB Template", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
-  siteTitleAlt: "Gatsby Blog Template", // Alternative site title for SEO.
+  siteTitle: "Takshilla Blogs", // Site title.
+  siteTitleShort: "Takshilla Learning", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
+  siteTitleAlt: "Takshilla Blogs", // Alternative site title for SEO.
   siteLogo: "/logos/logo-1024x1024.png", // Logo used for SEO and manifest.
   siteUrl: "https://gb-template.netlify.com", // Domain of your website without pathPrefix.
   pathPrefix: "", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
-  siteDescription: "A GatsbyJS Blog Template for blogging purpose.", // Website description used for RSS feeds/meta description tag.
+  siteDescription: "Takshilla Learning blogs", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   siteLang: "en",
   siteFBAppID: "399626517562189", // FB Application ID for using app insights
@@ -23,7 +24,7 @@ const config = {
   postOnDate: "Posted on",
   // Use for comment
   lazyLoadComments: true,
-  disqusShortname: "gb-template", // Disqus shortname.
+  disqusShortname: "Takshilla", // Disqus shortname.
   btnLoadComments: "Load comments",
   // Use for home page
   numberLoadmore: 6,
@@ -58,16 +59,12 @@ const config = {
   sidebarSticky: true,
   sidebarLinks: [
     {
-      label: "Complete JavaScript",
-      url: "https://completejavascript.com/"
+      label: "Takshilla Student Login",
+      url: "https://www.takshilalearning.com/#login"
     },
     {
-      label: "Lam Pham Blog",
-      url: "https://phamvanlam.com/"
-    },
-    {
-      label: "Lam Pham Portfolio",
-      url: "http://about.phamvanlam.com/"
+      label: "Takshilla Home Page",
+      url: "https://www.takshilalearning.com"
     },
   ],
   // Use for user info
@@ -107,28 +104,13 @@ const config = {
     },
   ],
   // Use for navigation
-  navTitle: "GB Template",
+  navTitle: "Takshilla",
   navLinks: [
     { label: "About", url: "/about" },
     { label: "Contact", url: "/contact" },
   ],
   // Use for footer
   socialLinks: [
-    { 
-      label: "Codepen", 
-      url: "https://codepen.io/completejavascript/", 
-      iconClassName: "fab codepen" 
-    },
-    { 
-      label: "FreeCodeCamp", 
-      url: "", // Ignore 
-      iconClassName: "fab free-code-camp"
-    },
-    { 
-      label: "GitHub",
-      url: "https://github.com/completejavascript",
-      iconClassName: "fab github"
-    },
     { 
       label: "Facebook", 
       url: "https://www.facebook.com/completejavascript/", 

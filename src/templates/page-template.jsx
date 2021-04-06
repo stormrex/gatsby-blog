@@ -11,8 +11,8 @@ import config from "../../data/SiteConfig";
 
 const PageTemplate = ({ data, pageContext }) => {
   const { slug, tagList, categoryList, latestPostEdges } = pageContext;
-  const postNode = data.markdownRemark;
-  const title = postNode.frontmatter.title;
+  const postNode = data.wpPage;
+  const title = postNode.title;
   const content = <Page postNode={postNode} slug={slug} />;
   const sidebar = <Sidebar 
     tagList={tagList} 
@@ -38,17 +38,8 @@ export default PageTemplate;
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query BlogPageBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      timeToRead
-      excerpt
-      frontmatter {
-        title
-        description
-      }
-      fields {
-        slug
-      }
+    wpPage(slug: { eq: $slug } ) {
+      title
     }
   }
 `;
