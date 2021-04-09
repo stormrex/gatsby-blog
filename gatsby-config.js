@@ -18,15 +18,15 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         // I have created a dummy site for us to use with the plugins we discussed
-        url: "https://staging.takshilalearning.com/graphql",
+        url: "http://staging.takshilalearning.com/graphql",
         hostingWPCOM: false,
         useACF: true,
         acfOptionPageIds: [],
         verboseOutput: false,
         perPage: 100,
         searchAndReplaceContentUrls: {
-          sourceUrl: "https://staging.takshilalearning.com/graphql",
-          replacementUrl: "https://saksham.takshilalearning.com:8000",
+          sourceUrl: "http://staging.takshilalearning.com/graphql",
+          replacementUrl: "http://saksham.takshilalearning.com:8000",
         },
         concurrentRequests: 10,
         includedRoutes: [
