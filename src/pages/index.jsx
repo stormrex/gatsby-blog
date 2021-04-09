@@ -72,20 +72,23 @@ export const pageQuery = graphql`
               name
             }
           }
+          categories {
+            nodes {
+              name
+            }
+          }
           date
-          # frontmatter {
-          #   title
-          #   tags
-          #   categories
-          #   date
-          #   cover {
-          #     childImageSharp {
-          #       fluid(maxWidth: 660, quality: 100) {
-          #         ...GatsbyImageSharpFluid
-          #       }
-          #     }
-          #   }
-          # }
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  fluid (maxWidth: 660, quality: 100){
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

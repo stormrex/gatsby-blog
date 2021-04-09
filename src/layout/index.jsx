@@ -9,6 +9,7 @@ import "../components/Icons/FontAwesome";
 import "../styles/shiba.min.css";
 import "../../content/styles/customize.scss";
 
+
 const MainLayout = ({ children, hasFooter = true }) => (
   <div>
     <Helmet htmlAttributes={{ lang: siteConfig.siteLang }}>

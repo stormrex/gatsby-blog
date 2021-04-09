@@ -11,7 +11,7 @@ export const getPostList = postEdges => postEdges.map(postEdge => ({
   path: postEdge.node.slug,
   tags: postEdge.node.tags,
   categories: postEdge.node.categories,
-  //cover: postEdge.node.frontmatter.cover,
+  cover: postEdge.node.featuredImage,
   title: postEdge.node.title,
   date: postEdge.node.date,
   slug: postEdge.node.slug,
@@ -25,12 +25,12 @@ export const getTagCategoryList = postList => {
   
   postList.forEach(({ categories, tags }) => {
     if (categories) {
-      categories.forEach(category => {
+      categories.nodes.forEach(category => {
         categorySet.add(category.name);
       });
     }
 
-    if (tags.nodes) {
+    if (tags) {
       tags.nodes.forEach(tag => {
         tagSet.add(tag.name);
       });

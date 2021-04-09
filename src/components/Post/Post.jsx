@@ -26,7 +26,7 @@ const Post = ({ postNode, config, slug }) => {
       <PostDivider />
       <div 
         className="padding-top padding-bottom" 
-        dangerouslySetInnerHTML={{ __html: postNode.html }} 
+        dangerouslySetInnerHTML={{ __html: postNode.content }} 
       />
       <PostDivider />
       <div className="padding-top padding-bottom">

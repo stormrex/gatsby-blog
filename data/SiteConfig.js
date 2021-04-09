@@ -5,7 +5,7 @@ const config = {
   siteTitleShort: "Takshilla Learning", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "Takshilla Blogs", // Alternative site title for SEO.
   siteLogo: "/logos/logo-1024x1024.png", // Logo used for SEO and manifest.
-  siteUrl: "https://gb-template.netlify.com", // Domain of your website without pathPrefix.
+  siteUrl: "https://localHost:8000/", // Domain of your website without pathPrefix.
   pathPrefix: "", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription: "Takshilla Learning blogs", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
@@ -19,8 +19,8 @@ const config = {
   // Use for post
   dateFromFormat: "YYYY-MM-DDTHH:mm:ssZ", // Date format used in the frontmatter.
   dateFormat: "MMMM Do, YYYY", // Date format for display.
-  postTagged: "",
-  postInCategories: "",
+  postTagged: "a",
+  postInCategories: "a",
   postOnDate: "Posted on",
   // Use for comment
   lazyLoadComments: true,
@@ -59,11 +59,11 @@ const config = {
   sidebarSticky: true,
   sidebarLinks: [
     {
-      label: "Takshilla Student Login",
+      label: "Student Login",
       url: "https://www.takshilalearning.com/#login"
     },
     {
-      label: "Takshilla Home Page",
+      label: "Home Page",
       url: "https://www.takshilalearning.com"
     },
   ],
@@ -106,7 +106,7 @@ const config = {
   // Use for navigation
   navTitle: "Takshilla",
   navLinks: [
-    { label: "About", url: "/about" },
+     { label: "About", url: "/about" },
     { label: "Contact", url: "/contact" },
   ],
   // Use for footer

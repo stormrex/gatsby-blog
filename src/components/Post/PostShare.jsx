@@ -15,7 +15,7 @@ import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 
 const PostShare = ({ postNode, postPath, extraClass = "" }) => {
-  const post = postNode.frontmatter;
+  const post = postNode;
   const url = urljoin(config.siteUrl, config.pathPrefix, postPath);
   const iconSize = 26;
   const filter = count => (count > 0 ? count : "");

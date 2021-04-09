@@ -12,7 +12,7 @@ class SEO extends Component {
     let image = "";
     let postURL;
     if (postSEO) {
-      const postMeta = postNode.frontmatter;
+      const postMeta = postNode;
       ({ title } = postMeta);
       description = postMeta.description
         ? postMeta.description

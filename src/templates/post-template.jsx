@@ -57,6 +57,17 @@ export const pageQuery = graphql`
         }
       }
       date
+      featuredImage {
+        node {
+          localFile {
+            childImageSharp {
+              fluid (maxWidth: 660, quality: 100){
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
     }
   }
 `;

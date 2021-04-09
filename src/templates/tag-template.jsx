@@ -63,12 +63,6 @@ export const pageQuery = graphql`
         order: DESC 
       }
       filter: {tags:{nodes: {elemMatch:{name:{in: [$tag]}}}}}
-      # filter: { 
-      #   frontmatter: { 
-      #     tags: { in: [$tag] }, 
-      #     template: { eq: "post" } 
-      #   } 
-      # }
     ) {
       totalCount
       edges {
@@ -81,20 +75,23 @@ export const pageQuery = graphql`
               name
             }
           }
+          categories {
+            nodes {
+              name
+            }
+          }
           date
-          # frontmatter {
-          #   title
-          #   tags
-          #   categories
-          #   cover {
-          #     childImageSharp {
-          #       fluid(maxWidth: 660, quality: 100) {
-          #         ...GatsbyImageSharpFluid
-          #       }
-          #     }
-          #   }
-          #   date
-          # }
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  fluid (maxWidth: 660, quality: 100){
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
