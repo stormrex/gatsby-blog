@@ -23,7 +23,7 @@ module.exports = {
         useACF: true,
         acfOptionPageIds: [],
         verboseOutput: false,
-        perPage: 100,
+        perPage: 50,
         searchAndReplaceContentUrls: {
           sourceUrl: "http://staging.takshilalearning.com/graphql",
           replacementUrl: "http://saksham.takshilalearning.com:8000",
