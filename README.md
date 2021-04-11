@@ -36,10 +36,9 @@ Navigate to localhost:8000.
 
 ## Configuration
 
-Edit the export object in `data/SiteConfig`:
+Edit the export object parameter in `data/SiteConfig` for local development:
 
 ```js
-const config = {
   siteUrl: "https://gb-template.netlify.com",// Domain of your website without pathPrefix.
   googleAnalyticsID: "UA-96543695-7",// GA tracking ID.
 ```
