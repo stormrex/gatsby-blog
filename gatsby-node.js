@@ -53,6 +53,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               template {
                 templateName
               }
+              content
+              featuredImage {
+                node {
+                  link
+                }
+              }
               date
             }
           }
@@ -98,8 +104,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
   
   // Create tagList, categoryList
-  const tagList = Array.from(tagSet);
-  const categoryList = Array.from(categorySet);
+  const tagList = Array.from(tagSet).slice(0, siteConfig.tagCount);
+  const categoryList = Array.from(categorySet).slice(0, siteConfig.categoryCount);
 
   // Get latest posts
   const latestPostEdges = [];
