@@ -26,7 +26,7 @@ module.exports = {
         perPage: 50,
         searchAndReplaceContentUrls: {
           sourceUrl: "https://staging.takshilalearning.com/graphql",
-          replacementUrl: "https://staging.takshilalearning.com/graphql",
+          replacementUrl: "http://saksham.takshilalearning.com",
         },
         concurrentRequests: 10,
         includedRoutes: [
