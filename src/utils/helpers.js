@@ -22,8 +22,11 @@ export const getPostList = postEdges => postEdges.map(postEdge => ({
 export const getTagCategoryList = postList => {
   const tagSet = new Set();
   const categorySet = new Set();
-  
-  postList.forEach(({ categories, tags }) => {
+
+  postList.forEach(({
+    categories,
+    tags
+  }) => {
     if (categories) {
       categories.nodes.forEach(category => {
         categorySet.add(category.name);
@@ -37,8 +40,8 @@ export const getTagCategoryList = postList => {
     }
   });
 
-  return { 
-    tagList: Array.from(tagSet),
-    categoryList: Array.from(categorySet)
+  return {
+    tagList: Array.from(tagSet).slice(0, config.tagCount),
+    categoryList: Array.from(categorySet).slice(0, config.categoryCount),
   }
 }
