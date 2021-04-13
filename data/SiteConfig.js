@@ -1,5 +1,5 @@
 const config = {
-  
+
   // Site info
   siteTitle: "Takshilla Blogs", // Site title.
   siteTitleShort: "Takshilla Learning", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
@@ -10,7 +10,7 @@ const config = {
   siteDescription: "Takshilla Learning blogs", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   siteLang: "en",
-  
+
   siteFBAppID: "399626517562189", // FB Application ID for using app insights
   googleAnalyticsID: "UA-96543695-7", // GA tracking ID.
   postDefaultCategoryID: "", // Default category for posts.
@@ -59,7 +59,7 @@ const config = {
   tagWidgetTitle: "Tags",
   latestPostsWidgetTitle: "Latest posts",
   linksWidgetTitle: "Links",
-  
+
   // Use for Google custom search
   searchWidgetTitle: "Looking for?",
   searchWidgetPlaceHolder: "Enter keyword",
@@ -68,8 +68,7 @@ const config = {
 
   // Use for links widget
   sidebarSticky: true,
-  sidebarLinks: [
-    {
+  sidebarLinks: [{
       label: "Student Login",
       url: "https://www.takshilalearning.com/#login"
     },
@@ -85,11 +84,9 @@ const config = {
   userTwitter: "CmpltJavaScript", // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: "Hanoi, Vietnam", // User location to display in the author segment.
   userAvatar: "https://www.gravatar.com/avatar/42fd3d526fde1ef76d5002e4ebd303e9.jpg?s=300", // User avatar to display in the author segment.
-  userDescription:
-    "Software Engineer, Web Developer, JavaScript Lover & Blogger @completejavascript.", // User description to display in the author segment.
+  userDescription: "Software Engineer, Web Developer, JavaScript Lover & Blogger @completejavascript.", // User description to display in the author segment.
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
-  userLinks: [
-    {
+  userLinks: [{
       label: "Email",
       url: "mailto:completejavascript.super@gmail.com",
       iconClassName: "far envelope"
@@ -104,33 +101,37 @@ const config = {
       url: "https://twitter.com/CmpltJavaScript",
       iconClassName: "fab twitter"
     },
-    { 
-      label: "Facebook", 
-      url: "https://www.facebook.com/completejavascript/", 
-      iconClassName: "fab facebook-f" 
+    {
+      label: "Facebook",
+      url: "https://www.facebook.com/completejavascript/",
+      iconClassName: "fab facebook-f"
     },
-    { 
-      label: "Linkedin", 
-      url: "https://www.linkedin.com/in/completejavascript/", 
+    {
+      label: "Linkedin",
+      url: "https://www.linkedin.com/in/completejavascript/",
       iconClassName: "fab linkedin-in"
     },
   ],
   // Use for navigation
   navTitle: "Takshilla",
-  navLinks: [
-     { label: "About", url: "/about" },
-    { label: "Contact", url: "/contact" },
+  navLinks: [{
+      label: "About",
+      url: "/about"
+    },
+    {
+      label: "Contact",
+      url: "/contact"
+    },
   ],
   // Use for footer
-  socialLinks: [
-    { 
-      label: "Facebook", 
-      url: "https://www.facebook.com/completejavascript/", 
+  socialLinks: [{
+      label: "Facebook",
+      url: "https://www.facebook.com/completejavascript/",
       iconClassName: "fab facebook-f"
     },
-    { 
-      label: "Linkedin", 
-      url: "https://www.linkedin.com/in/completejavascript/", 
+    {
+      label: "Linkedin",
+      url: "https://www.linkedin.com/in/completejavascript/",
       iconClassName: "fab linkedin-in"
     },
     {
@@ -138,19 +139,37 @@ const config = {
       url: "https://twitter.com/CmpltJavaScript",
       iconClassName: "fab twitter"
     },
+
     {
       label: "RSS",
       url: "https://gb-template.netlify.com/rss.xml",
       iconClassName: "fas rss"
     },
   ],
-  footerLinks: [
-    { label: "Home", url: "/" },
-    { label: "About", url: "/about" },
-    { label: "Contact", url: "/contact" },
-    { label: "Terms of Use", url: "/terms" },
-    { label: "Privacy Policy", url: "/privacy" },
-    { label: "Sitemap", url: "https://gb-template.netlify.com/sitemap.xml" },
+  footerLinks: [{
+      label: "Home",
+      url: "/"
+    },
+    {
+      label: "About",
+      url: "/about"
+    },
+    {
+      label: "Contact",
+      url: "/contact"
+    },
+    {
+      label: "Terms of Use",
+      url: "/terms"
+    },
+    {
+      label: "Privacy Policy",
+      url: "/privacy"
+    },
+    {
+      label: "Sitemap",
+      url: "https://gb-template.netlify.com/sitemap.xml"
+    },
   ],
   copyright: "Copyright © 2019-2020 Lam Pham. Unless otherwise noted, all code MIT license.",
   // Use for manifest
