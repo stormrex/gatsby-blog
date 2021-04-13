@@ -139,7 +139,6 @@ const config = {
       url: "https://twitter.com/CmpltJavaScript",
       iconClassName: "fab twitter"
     },
-
     {
       label: "RSS",
       url: "https://gb-template.netlify.com/rss.xml",
