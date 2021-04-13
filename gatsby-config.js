@@ -17,7 +17,6 @@ module.exports = {
   plugins: [{
       resolve: "gatsby-source-wordpress",
       options: {
-        // I have created a dummy site for us to use with the plugins we discussed
         url: "https://staging.takshilalearning.com/graphql",
         hostingWPCOM: false,
         useACF: true,
