@@ -1,13 +1,13 @@
 const config = {
 
   // Site info
-  siteTitle: "Takshilla Blogs", // Site title.
-  siteTitleShort: "Takshilla Learning", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
-  siteTitleAlt: "Takshilla Blogs", // Alternative site title for SEO.
+  siteTitle: "Takshila Blogs", // Site title.
+  siteTitleShort: "Takshila Learning", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
+  siteTitleAlt: "Takshila Blogs", // Alternative site title for SEO.
   siteLogo: "/logos/logo-1024x1024.png", // Logo used for SEO and manifest.
   siteUrl: "http://saksham.takshilalearning.com/", // Domain of your website without pathPrefix.
   pathPrefix: "", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
-  siteDescription: "Takshilla Learning blogs", // Website description used for RSS feeds/meta description tag.
+  siteDescription: "Takshila Learning blogs", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   siteLang: "en",
 
@@ -28,7 +28,7 @@ const config = {
 
   // Use for comment
   lazyLoadComments: true,
-  disqusShortname: "Takshilla", // Disqus shortname.
+  disqusShortname: "Takshila", // Disqus shortname.
   btnLoadComments: "Load comments",
 
   // Use for home page
@@ -81,7 +81,7 @@ const config = {
   ],
 
   // Use for user info
-  userName: "Takshilla", // Username to display in the author segment.
+  userName: "Takshila", // Username to display in the author segment.
   userEmail: "", // Email used for RSS feed"s author segment
   userTwitter: "CmpltJavaScript", // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: "Hanoi, Vietnam", // User location to display in the author segment.
@@ -115,7 +115,7 @@ const config = {
     },
   ],
   // Use for navigation
-  navTitle: "Takshilla",
+  navTitle: "Takshila",
   navLinks: [{
       label: "About",
       url: "/about"
