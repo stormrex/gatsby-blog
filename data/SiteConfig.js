@@ -128,23 +128,18 @@ const config = {
   // Use for footer
   socialLinks: [{
       label: "Facebook",
-      url: "https://www.facebook.com/completejavascript/",
+      url: "https://www.facebook.com/takshilalearn/",
       iconClassName: "fab facebook-f"
     },
     {
       label: "Linkedin",
-      url: "https://www.linkedin.com/in/completejavascript/",
+      url: "https://www.linkedin.com/company/takshilalearn/",
       iconClassName: "fab linkedin-in"
     },
     {
       label: "Twitter",
-      url: "https://twitter.com/CmpltJavaScript",
+      url: "https://twitter.com/TakshilaLearn?s=20 ",
       iconClassName: "fab twitter"
-    },
-    {
-      label: "RSS",
-      url: "https://gb-template.netlify.com/rss.xml",
-      iconClassName: "fas rss"
     },
   ],
   footerLinks: [{
@@ -157,22 +152,10 @@ const config = {
     },
     {
       label: "Contact",
-      url: "/contact"
-    },
-    {
-      label: "Terms of Use",
-      url: "/terms"
-    },
-    {
-      label: "Privacy Policy",
-      url: "/privacy"
-    },
-    {
-      label: "Sitemap",
-      url: "https://gb-template.netlify.com/sitemap.xml"
+      url: "/contact-us"
     },
   ],
-  copyright: "Copyright © 2019-2020 Lam Pham. Unless otherwise noted, all code MIT license.",
+  copyright: "Copyright © 2020-2021 Takshila Learning. All rights are reserved by takshila",
   // Use for manifest
   themeColor: "#2196F3", // Used for setting manifest and progress theme colors.
   backgroundColor: "#FFF" // Used for setting manifest background color.
