@@ -10,41 +10,50 @@ const config = {
   siteDescription: "Takshilla Learning blogs", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   siteLang: "en",
+  
   siteFBAppID: "399626517562189", // FB Application ID for using app insights
   googleAnalyticsID: "UA-96543695-7", // GA tracking ID.
   postDefaultCategoryID: "", // Default category for posts.
+
   // Common for tag, category pages and widget
   numberLatestPost: 8,
-  postsPerPage: 6,
+  postsPerPage: 10,
+
   // Use for post
   dateFromFormat: "YYYY-MM-DDTHH:mm:ssZ", // Date format used in the frontmatter.
   dateFormat: "MMMM Do, YYYY", // Date format for display.
   postTagged: "a",
   postInCategories: "a",
   postOnDate: "Posted on",
+
   // Use for comment
   lazyLoadComments: true,
   disqusShortname: "Takshilla", // Disqus shortname.
   btnLoadComments: "Load comments",
+
   // Use for home page
   numberLoadmore: 6,
   btnLoadmore: "Load more",
   homeHasLoadmore: true,
   homeHasThumbnail: true,
   homeHeader: "Home",
+
   // Use for page
   pathPrefixPagination: "/page", // Prefix path for pagination
   pageNotFoundTitle: "Page Not Found", // 
   pageNotFoundBtn: "Back to our site",
   pageNotFoundContent: "Looks like you've followed a broken link or entered a URL that doesn't exist on this site.",
+
   // Use for tag
   pathPrefixTag: "/tag", // Prefix path for tags
   tagHeader: "Posts tagged as", // use in header of tag-template page
   tagHasThumbnail: true,
+
   // Use for category
   pathPrefixCategory: "/category", // Prefix path for category
   categoryHeader: "Posts in category", // use in header of category-template page
   categoryHasThumbnail: true,
+
   // Use for widget
   categoryWidgetTitle: "Categories",
   tagWidgetTitle: "Tags",
@@ -56,6 +65,7 @@ const config = {
   searchWidgetPlaceHolder: "Enter keyword",
   searchEngineID: "008548374781244864787:9ybvtnkbt7o",
   hasSearch: true,
+
   // Use for links widget
   sidebarSticky: true,
   sidebarLinks: [
@@ -68,9 +78,10 @@ const config = {
       url: "https://www.takshilalearning.com"
     },
   ],
+
   // Use for user info
-  userName: "Lam Pham", // Username to display in the author segment.
-  userEmail: "completejavascript.super@gmail.com", // Email used for RSS feed"s author segment
+  userName: "Takshilla", // Username to display in the author segment.
+  userEmail: "", // Email used for RSS feed"s author segment
   userTwitter: "CmpltJavaScript", // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: "Hanoi, Vietnam", // User location to display in the author segment.
   userAvatar: "https://www.gravatar.com/avatar/42fd3d526fde1ef76d5002e4ebd303e9.jpg?s=300", // User avatar to display in the author segment.
