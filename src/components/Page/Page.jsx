@@ -1,7 +1,7 @@
 import React from "react";
 
 const Page = ({ postNode, slug }) => {
-  const post = postNode.frontmatter;
+  const post = postNode;
   if (!post.id) {
     post.id = slug;
   }
@@ -10,7 +10,7 @@ const Page = ({ postNode, slug }) => {
     <div className="page-container">
       <div 
         className="padding-top padding-bottom" 
-        dangerouslySetInnerHTML={{ __html: postNode.html }} 
+        dangerouslySetInnerHTML={{ __html: postNode.content }} 
       />
     </div>
   )

@@ -39,7 +39,18 @@ export default PageTemplate;
 export const pageQuery = graphql`
   query BlogPageBySlug($slug: String!) {
     wpPage(slug: { eq: $slug } ) {
+      slug
       title
+      template {
+        templateName
+      }
+      content
+      featuredImage {
+        node {
+          link
+        }
+      }
+      date
     }
   }
 `;
