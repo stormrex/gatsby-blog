@@ -53,6 +53,8 @@ const config = {
   pathPrefixCategory: "/category", // Prefix path for category
   categoryHeader: "Posts in category", // use in header of category-template page
   categoryHasThumbnail: true,
+  categoryCount: 15, //Number of Categories in Home Page Side Bar
+  tagCount: 15, //Number of tags in Home Page Side Bar
 
   // Use for widget
   categoryWidgetTitle: "Categories",
