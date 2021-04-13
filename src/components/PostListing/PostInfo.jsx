@@ -7,7 +7,9 @@ const PostInfo = ({ post, extraClass = "" }) => (
     <AutoLink to={post.slug} key={post.title}>
       <h2><small>{post.title}</small></h2>
     </AutoLink> 
-    <div className="margin-bottom-half">{post.excerpt}</div>
+    <div className="margin-bottom-half">
+      <div dangerouslySetInnerHTML={{__html:post.excerpt}}/>
+    </div>
     <small><PostDate date={post.date} /></small>
   </div>
 )
