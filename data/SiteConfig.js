@@ -116,7 +116,12 @@ const config = {
   ],
   // Use for navigation
   navTitle: "Takshila",
-  navLinks: [{
+  navLinks: [
+    {
+      label: "Home",
+      url: "/"
+    },
+    ,{
       label: "About",
       url: "/about"
     },

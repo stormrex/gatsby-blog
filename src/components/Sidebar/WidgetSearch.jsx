@@ -6,12 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class WidgetSearch extends Component {
   render() {
+    
     return (
       <>
         {config.hasSearch && (
           <WidgetContainer extraClass="search-container">
             <WidgetTitle title={config.searchWidgetTitle} />
-            <form className="margin-bottom-none" action="/search/" method="get">
+            <form className="margin-bottom-none" action="/" method="get">
               <div className="container-full row padding-none margin-bottom-none">
                 <div className="padding-none padding-right-half col-xs-10">
                   <input
