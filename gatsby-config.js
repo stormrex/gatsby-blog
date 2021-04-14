@@ -22,12 +22,12 @@ module.exports = {
         useACF: true,
         acfOptionPageIds: [],
         verboseOutput: false,
-        perPage: 50,
+        perPage: 5,
         searchAndReplaceContentUrls: {
           sourceUrl: "https://staging.takshilalearning.com/graphql",
-          replacementUrl: "http://saksham.takshilalearning.com",
+          replacementUrl: "https://localhost:8000",
         },
-        concurrentRequests: 10,
+        concurrentRequests: 2,
         includedRoutes: [
           "**/categories",
           "**/posts",
