@@ -122,7 +122,7 @@ const config = {
     },
     {
       label: "Contact",
-      url: "/contact"
+      url: "/contact-us"
     },
   ],
   // Use for footer
